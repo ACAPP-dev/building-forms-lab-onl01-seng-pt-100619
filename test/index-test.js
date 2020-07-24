@@ -71,7 +71,7 @@ describe('Redux', () => {
 
   it('updates the store when a form is submitted', () => {
     const store = createStore(manageBand)
-
+console.log(store)
     let spy = sinon.spy(store, "dispatch")
 
     const wrapper = mount(<Provider store={store}><App /></Provider>)
