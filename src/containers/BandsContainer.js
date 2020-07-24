@@ -8,22 +8,20 @@ class BandsContainer extends Component {
       <div>
         < BandInput addBand={this.props.addBand} />
         <ul>
-          {this.props.bands.map(band => {
-            return <li>{band}</li>
+          {this.props.bands.map((band, idx) => {
+            return <li key={idx}>{band.name}</li>
           })}
-
         </ul>
       </div>
     )
   }
 }
 
-const MapStateToProps = state => {
-  console.log(state)
-  return state
+const mapStateToProps = state => {
+  return {bands: state.bands}
 }
 
-const MapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     addBand: formData => dispatch(addBandAction(formData))
   }
@@ -36,4 +34,4 @@ const addBandAction = band => {
   }
 }
 
-export default connect(MapStateToProps, MapDispatchToProps)(BandsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(BandsContainer)
